@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Work - Chitravision Production</title>
+  <meta name="description" content="Selected films, campaigns, and visual stories from Chitravision Production.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&display=swap">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/work.css">
+  <link rel="stylesheet" href="css/home.css">
+
+</head>
+<body>
+  <div class="grain"></div>
+
+  <!-- Navigation -->
+  <header class="glass-nav">
+    <a href="index.html" class="brand-lockup">
+      <span class="brand-dot"></span>
+      <span>CHITRAVISION</span>
+    </a>
+    <nav class="nav-links" id="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="nav-cta">
+      Start a project
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+    </a>
+    <button class="menu-toggle" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
+      <svg id="menuIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <!-- Page Header -->
+    <section class="page-header section-pad">
+      <div class="section-kicker">/ Selected work</div>
+      <div class="header-grid">
+        <h1>Stories that<br><em>stay.</em></h1>
+        <p class="header-intro">
+          Every project is a chance to turn an idea into something people remember.
+          Here's some of what we've made—real work for real people.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="filter-section">
+      <div class="filter-container">
+        <span class="filter-label">Filter:</span>
+        <div class="filter-chips" id="filterChips" role="tablist" aria-label="Project categories">
+          <button class="filter-chip active" data-filter="all" role="tab" aria-selected="true">
+            All work
+          </button>
+          <button class="filter-chip" data-filter="brand-films" role="tab" aria-selected="false">
+            Brand Films
+          </button>
+          <button class="filter-chip" data-filter="campaigns" role="tab" aria-selected="false">
+            Campaigns
+          </button>
+          <button class="filter-chip" data-filter="wedding-films" role="tab" aria-selected="false">
+            Wedding Films
+          </button>
+          <button class="filter-chip" data-filter="commercials" role="tab" aria-selected="false">
+            Commercials
+          </button>
+          <button class="filter-chip" data-filter="motion-design" role="tab" aria-selected="false">
+            Motion & Design
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio-section section-pad">
+      <div class="portfolio-grid" id="portfolioGrid"></div>
+
+      <div class="portfolio-empty" id="emptyState" style="display: none;">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.3; margin-bottom: 16px;">
+          <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
+          <line x1="2" y1="7" x2="22" y2="7"/>
+          <circle cx="12" cy="14" r="3"/>
+        </svg>
+        <p>No projects match this filter.</p>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="work-cta-section section-pad">
+      <div class="section-kicker">/ Start a conversation</div>
+      <div class="cta-content">
+        <h2>Ready to make<br><em>something?</em></h2>
+        <p class="cta-note">Let's talk about your project and what we can create together.</p>
+        <a href="contact.html" class="cta-button">
+          Get in touch
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="cv-footer">
+
+  <div class="cv-footer-top">
+
+    <!-- Brand description -->
+    <div class="cv-footer-brand">
+      <a href="index.html" class="cv-footer-logo">
+        CHITRA<span>VISION</span><span class="cv-logo-dot">.</span>
+      </a>
+
+      <p>
+        Independent creative production studio crafting films, photography, and visual stories that capture attention, build trust, and move brands forward.
+      </p>
+    </div>
+
+    <!-- Navigation -->
+    <div class="cv-footer-column">
+      <h4>NAVIGATION</h4>
+      <a href="index.html">HOME</a>
+      <a href="services.html">SERVICES</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </div>
+
+    <!-- Social links -->
+    <div class="cv-footer-column">
+      <h4>SOCIALS</h4>
+      <!-- Replace # with your actual social profile URLs -->
+      <a href="https://www.instagram.com/chitravision_production/" target="https://www.instagram.com/chitravision_production/">INSTAGRAM ↗</a>
+      <a href="https://www.instagram.com/chitravision_marketing/" >CHITRAVISION MARKETING ↗</a>
+      <a href="#" target="_blank" rel="noopener noreferrer">YOUTUBE ↗</a>
+    </div>
+
+  </div>
+
+  <div class="cv-footer-divider"></div>
+
+  <!-- Large interactive wordmark -->
+  <a href="index.html" class="cv-footer-monogram"
+     aria-label="Chitravision home">
+    <span class="cv-monogram-text">CHITRAVISION</span><span
+      class="cv-monogram-dot">.</span>
+  </a>
+
+  <!-- Bottom row -->
+  <div class="cv-footer-bottom">
+    <span>© 2026 CHITRAVISION. ALL RIGHTS RESERVED.</span>
+
+    <div class="cv-footer-legal">
+      <a href="contact.html">LET'S TALK ↗</a>
+      <a href="#top">BACK TO TOP ↑</a>
+    </div>
+  </div>
+
+</footer>
+
+  <!-- Modal Container -->
+  <div id="modalSlot"></div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/work.js"></script>
+</body>
+</html>

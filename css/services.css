@@ -1,0 +1,578 @@
+/* Chitravision Production - Services Page Styles */
+
+/* ========================================
+   PAGE HEADER
+   ======================================== */
+
+.page-header {
+  background: var(--stone);
+  padding-top: calc(env(safe-area-inset-top, 0px) + 120px);
+}
+
+.header-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: end;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header-intro {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--mithril);
+  margin: 0;
+  max-width: 520px;
+}
+
+/* ========================================
+   SERVICE SHOWCASE
+   ======================================== */
+
+.service-showcase {
+  background: var(--stone);
+  border-bottom: 1px solid var(--line);
+}
+
+.service-showcase.alt {
+  background: var(--panel);
+}
+
+.service-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  margin-bottom: 56px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-number {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 48px;
+  color: var(--mithril);
+  line-height: 1;
+}
+
+.service-title-group h2 {
+  margin-bottom: 16px;
+}
+
+.service-description {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--mithril);
+  margin: 0;
+  max-width: 720px;
+}
+
+.service-content {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 64px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.service-info h3 {
+  font-size: 18px;
+  margin: 0 0 16px 0;
+  color: var(--ink);
+}
+
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.service-features li {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--mithril);
+  padding-left: 24px;
+  position: relative;
+}
+
+.service-features li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--brilliance);
+}
+
+.service-approach {
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.service-approach p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--mithril);
+  margin: 0;
+}
+
+/* Service Showcase Grid */
+.service-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.showcase-item {
+  position: relative;
+  aspect-ratio: 16/10;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  transition: transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .3s;
+}
+
+.showcase-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,.4);
+}
+
+.showcase-thumb {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transition: opacity .4s;
+}
+
+.showcase-item:hover .showcase-thumb {
+  opacity: 0.8;
+}
+
+.showcase-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity .3s;
+  z-index: 2;
+}
+
+.showcase-item:hover .showcase-overlay {
+  opacity: 1;
+}
+
+.showcase-overlay svg {
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.6));
+}
+
+.showcase-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0,0,0,.8) 0%, transparent 100%);
+  z-index: 3;
+}
+
+.showcase-label-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 4px 0;
+}
+
+.showcase-label-meta {
+  font-size: 12px;
+  color: var(--mithril);
+  margin: 0;
+}
+
+/* ========================================
+   PROCESS SECTION - VERTICAL PROGRESSIVE
+   ======================================== */
+
+.process-section {
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+.process-section h2 {
+  margin-bottom: 120px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+ .process-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Vertical progress line */
+
+.process-grid::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--line);
+  z-index: -1;
+}
+
+/* Animated progress indicator */
+
+.process-grid::after {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  width: 3px;
+  height: 0%;
+  background: linear-gradient(
+    to bottom,
+    var(--brilliance),
+    var(--mithril)
+  );
+  z-index: -1;
+  transition: height 0.3s ease-out;
+}
+
+.process-grid.progress-25::after {
+  height: 25%;
+}
+
+.process-grid.progress-50::after {
+  height: 50%;
+}
+
+.process-grid.progress-75::after {
+  height: 75%;
+}
+
+.process-grid.progress-100::after {
+  height: 100%;
+}
+
+.process-step {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 80px 0 80px 120px;
+  position: relative;
+  opacity: 0.3;
+  transform: translateX(-40px);
+  z-index: 1;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  border-left: 3px solid transparent;
+}
+
+
+.process-step.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Step indicator circle with number */
+
+.process-step::before {
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 90px;
+  width: 60px;
+  height: 60px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--stone);
+  border: 3px solid var(--line);
+  z-index: 2;
+  transition: border-color 0.6s, background 0.6s,
+              transform 0.6s;
+}
+
+
+.process-step.active::before {
+  border-color: var(--brilliance);
+  background: var(--panel);
+  transform: scale(1.1);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.1);
+}
+
+/* Remove the large number, we'll use it in the circle */
+.process-number {
+  display: none;
+}
+
+/* Create the number inside the circle */
+
+.process-step::after {
+  content: attr(data-step);
+  position: absolute;
+  left: 0;
+  top: 90px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 28px;
+  color: var(--mithril);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.process-step.active::after {
+  color: var(--brilliance);
+}
+
+.process-step h3 {
+  font-size: clamp(32px, 4vw, 56px);
+  margin: 0;
+  color: var(--mithril);
+  transition: color 0.6s;
+  text-align: left;
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-family: var(--display);
+  font-weight: 800;
+}
+
+.process-step.active h3 {
+  color: var(--ink);
+}
+
+.process-step p {
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.6;
+  color: var(--mithril);
+  margin: 0;
+  max-width: 800px;
+  text-align: left;
+  transition: color 0.6s;
+}
+
+.process-step.active p {
+  color: var(--ink);
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+
+.services-cta-section {
+  background: var(--stone);
+  text-align: center;
+}
+
+.services-cta-section .cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.services-cta-section .cta-note {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--mithril);
+  margin: 0;
+}
+
+.services-cta-section .cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 36px;
+  margin-top: 16px;
+  background: var(--brilliance);
+  color: var(--stone);
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 16px rgba(255,255,255,.1);
+}
+
+.services-cta-section .cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255,255,255,.2);
+}
+
+/* ========================================
+   RESPONSIVE - TABLET
+   ======================================== */
+
+@media (max-width: 960px) {
+  .header-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .service-header {
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+  }
+
+  .service-number {
+    font-size: 36px;
+  }
+
+  .service-content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .service-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-section h2 {
+    margin-bottom: 80px;
+  }
+
+  .process-grid::before,
+  .process-grid::after {
+    left: 25px;
+  }
+
+  .process-step {
+    padding: 60px 0 60px 100px;
+  }
+
+  .process-step::before {
+    width: 50px;
+    height: 50px;
+    top: 70px;
+  }
+
+  .process-step::after {
+    width: 50px;
+    height: 50px;
+    top: 70px;
+    font-size: 24px;
+  }
+
+  .process-step h3 {
+    font-size: clamp(28px, 5vw, 48px);
+  }
+
+  .process-step p {
+    font-size: clamp(16px, 2.5vw, 20px);
+  }
+}
+
+/* ========================================
+   RESPONSIVE - MOBILE
+   ======================================== */
+
+@media (max-width: 720px) {
+  .service-header {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .service-number {
+    font-size: 28px;
+  }
+
+  .service-description {
+    font-size: 16px;
+  }
+
+  .service-info {
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .process-section h2 {
+    margin-bottom: 60px;
+  }
+
+  .process-grid::before,
+  .process-grid::after {
+    left: 20px;
+    width: 2px;
+  }
+
+  .process-step {
+    padding: 48px 0 48px 80px;
+    gap: 16px;
+  }
+
+  .process-step::before {
+    width: 40px;
+    height: 40px;
+    top: 52px;
+    border-width: 2px;
+  }
+
+  .process-step::after {
+    width: 40px;
+    height: 40px;
+    top: 52px;
+    font-size: 20px;
+  }
+
+  .process-step h3 {
+    font-size: clamp(24px, 6vw, 36px);
+  }
+
+  .process-step p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .showcase-label {
+    padding: 12px;
+  }
+
+  .showcase-label-title {
+    font-size: 14px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase-item,
+  .showcase-thumb,
+  .showcase-overlay {
+    transition: none !important;
+  }
+
+  .process-step,
+  .process-step::before,
+  .process-step::after,
+  .process-grid::after {
+    transition: none !important;
+  }
+
+  .process-step {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

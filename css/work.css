@@ -1,0 +1,372 @@
+/* Chitravision Production - Work Page Styles */
+
+/* ========================================
+   PAGE HEADER
+   ======================================== */
+
+.page-header {
+  background: var(--stone);
+  padding-top: calc(env(safe-area-inset-top, 0px) + 120px);
+}
+
+.header-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: end;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header-intro {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--mithril);
+  margin: 0;
+  max-width: 520px;
+}
+
+/* ========================================
+   FILTER SECTION
+   ======================================== */
+
+.filter-section {
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 24px clamp(16px, 4vw, 56px);
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + 70px);
+  z-index: 30;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter-container::-webkit-scrollbar {
+  height: 4px;
+}
+
+.filter-container::-webkit-scrollbar-track {
+  background: var(--line);
+}
+
+.filter-container::-webkit-scrollbar-thumb {
+  background: var(--mithril);
+  border-radius: 2px;
+}
+
+.filter-label {
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mithril);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filter-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  padding: 8px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--mithril);
+  background: transparent;
+  cursor: pointer;
+  transition: all .2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filter-chip:hover {
+  border-color: var(--mithril);
+  color: var(--ink);
+}
+
+.filter-chip.active {
+  background: var(--brilliance);
+  color: var(--stone);
+  border-color: var(--brilliance);
+}
+
+/* ========================================
+   PORTFOLIO GRID
+   ======================================== */
+
+.portfolio-section {
+  background: var(--stone);
+  min-height: 60vh;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.project-card {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .3s;
+  animation: projectFadeIn 0.6s ease-out backwards;
+}
+
+.project-card[data-hidden="true"] {
+  display: none;
+}
+
+@keyframes projectFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(0,0,0,.4);
+}
+
+.project-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.project-gradient {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity .4s;
+}
+
+.project-card:hover .project-gradient {
+  opacity: 0.7;
+}
+
+.project-play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0,0,0,.3);
+  opacity: 0;
+  transition: opacity .3s;
+  z-index: 2;
+}
+
+.project-card:hover .project-play {
+  opacity: 1;
+}
+
+.project-play svg {
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.5));
+}
+
+.project-info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mithril);
+}
+
+.project-category {
+  display: inline-block;
+}
+
+.project-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--mithril);
+}
+
+.project-title {
+  font-size: 22px;
+  font-family: var(--display);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--ink);
+}
+
+.project-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--mithril);
+  margin: 0;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.project-tag {
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--mithril);
+  background: rgba(255,255,255,.02);
+}
+
+/* Empty State */
+.portfolio-empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--mithril);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.portfolio-empty p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+
+.work-cta-section {
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.work-cta-section .cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.work-cta-section .cta-note {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--mithril);
+  margin: 0;
+}
+
+.work-cta-section .cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 36px;
+  margin-top: 16px;
+  background: var(--brilliance);
+  color: var(--stone);
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 16px rgba(255,255,255,.1);
+}
+
+.work-cta-section .cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255,255,255,.2);
+}
+
+/* ========================================
+   RESPONSIVE - TABLET
+   ======================================== */
+
+@media (max-width: 960px) {
+  .header-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE - MOBILE
+   ======================================== */
+
+@media (max-width: 720px) {
+  .filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-chips {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-title {
+    font-size: 20px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    animation: none !important;
+  }
+
+  .project-card,
+  .project-gradient,
+  .project-play {
+    transition: none !important;
+  }
+}

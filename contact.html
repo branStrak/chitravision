@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Contact - Chitravision Production</title>
+  <meta name="description" content="Start a conversation with Chitravision Production. Let's talk about your project.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&display=swap">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/home.css">
+
+</head>
+<body>
+  <div class="grain"></div>
+
+  <!-- Navigation -->
+  <header class="glass-nav">
+    <a href="index.html" class="brand-lockup">
+      <span class="brand-dot"></span>
+      <span>CHITRAVISION</span>
+    </a>
+    <nav class="nav-links" id="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="contact.html" class="nav-cta">
+      Start a project
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+    </a>
+    <button class="menu-toggle" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
+      <svg id="menuIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <!-- Page Header -->
+    <section class="page-header section-pad">
+      <div class="section-kicker">/ Get in touch</div>
+      <div class="header-content">
+        <h1>Let's talk about<br><em>your project.</em></h1>
+        <p class="header-intro">
+          Whether you have a clear brief or just a spark of an idea, we'd like to hear it.
+          Tell us a little about where you want to go—we'll take it from there.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-section section-pad">
+      <div class="contact-grid">
+        <!-- Contact Form -->
+        <div class="form-container">
+          <form id="contactForm" class="contact-form" novalidate>
+            <div class="form-group">
+              <label for="name" class="form-label">Your name <span class="required">*</span></label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-input"
+                required
+                aria-required="true"
+                placeholder="How should we address you?">
+              <span class="form-error" id="nameError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email address <span class="required">*</span></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input"
+                required
+                aria-required="true"
+                placeholder="your@email.com">
+              <span class="form-error" id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="company" class="form-label">Company or project</label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                class="form-input"
+                placeholder="Optional">
+            </div>
+
+            <div class="form-group">
+              <label for="service" class="form-label">What are you interested in? <span class="required">*</span></label>
+              <select
+                id="service"
+                name="service"
+                class="form-select"
+                required
+                aria-required="true">
+                <option value="">Select a service</option>
+                <option value="brand-films">Brand Films</option>
+                <option value="campaigns">Campaigns</option>
+                <option value="motion-design">Motion & Design</option>
+                <option value="wedding-films">Wedding Films</option>
+                <option value="commercials">Commercials</option>
+                <option value="not-sure">Not sure yet</option>
+              </select>
+              <span class="form-error" id="serviceError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="budget" class="form-label">Estimated budget range</label>
+              <select id="budget" name="budget" class="form-select">
+                <option value="">Select a range (optional)</option>
+                <option value="under-5k">Under ₹5,00,000</option>
+                <option value="5k-10k">₹5,00,000 - ₹10,00,000</option>
+                <option value="10k-20k">₹10,00,000 - ₹20,00,000</option>
+                <option value="20k-plus">₹20,00,000+</option>
+                <option value="flexible">Flexible / To be discussed</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="timeline" class="form-label">When do you need this?</label>
+              <select id="timeline" name="timeline" class="form-select">
+                <option value="">Select a timeline (optional)</option>
+                <option value="urgent">ASAP (within 2-4 weeks)</option>
+                <option value="soon">Soon (1-2 months)</option>
+                <option value="planning">Planning ahead (3+ months)</option>
+                <option value="exploring">Just exploring for now</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="form-label">Tell us about your project <span class="required">*</span></label>
+              <textarea
+                id="message"
+                name="message"
+                class="form-textarea"
+                rows="6"
+                required
+                aria-required="true"
+                placeholder="What's the story you want to tell? What inspired this project? Any context or challenges we should know about?"></textarea>
+              <span class="form-error" id="messageError"></span>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="form-submit" id="submitBtn">
+                <span class="submit-text">Send enquiry</span>
+                <span class="submit-loader" style="display: none;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;">
+                    <circle cx="12" cy="12" r="10" opacity="0.25"/>
+                    <path d="M12 2a10 10 0 0 1 10 10" opacity="1"/>
+                  </svg>
+                </span>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="submit-arrow">
+                  <path d="M7 17 17 7M7 7h10v10"/>
+                </svg>
+              </button>
+              <p class="form-note">We typically respond within 1-2 business days.</p>
+            </div>
+
+            <div class="form-message" id="formMessage" style="display: none;"></div>
+          </form>
+        </div>
+
+        <!-- Contact Info Sidebar -->
+        <aside class="contact-info">
+          <div class="info-section">
+            <h3>Prefer email?</h3>
+            <p>Drop us a line directly at:</p>
+            <a href="mailto:hello@chitravision.studio" class="info-link">
+              hello@chitravision.studio
+            </a>
+          </div>
+
+          <div class="info-section">
+            <h3>Location</h3>
+            <p>Based in India<br>Working everywhere</p>
+          </div>
+
+          <div class="info-section">
+            <h3>What to expect</h3>
+            <ul class="info-list">
+              <li>We'll review your enquiry within 1-2 business days</li>
+              <li>If it's a good fit, we'll set up a call to dig deeper</li>
+              <li>We'll share a custom proposal with timeline and pricing</li>
+              <li>Once aligned, we get to work</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h3>Quick links</h3>
+            <div class="quick-links">
+              <a href="work.html" class="text-link">
+                View our work
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17 17 7M7 7h10v10"/>
+                </svg>
+              </a>
+              <a href="services.html" class="text-link">
+                Explore services
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17 17 7M7 7h10v10"/>
+                </svg>
+              </a>
+              <a href="about.html" class="text-link">
+                Learn about us
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17 17 7M7 7h10v10"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="cv-footer">
+
+  <div class="cv-footer-top">
+
+    <!-- Brand description -->
+    <div class="cv-footer-brand">
+      <a href="index.html" class="cv-footer-logo">
+        CHITRA<span>VISION</span><span class="cv-logo-dot">.</span>
+      </a>
+
+      <p>
+        Independent creative production studio crafting films, photography, and visual stories that capture attention, build trust, and move brands forward.
+      </p>
+    </div>
+
+    <!-- Navigation -->
+    <div class="cv-footer-column">
+      <h4>NAVIGATION</h4>
+      <a href="index.html">HOME</a>
+      <a href="services.html">SERVICES</a>
+      <a href="work.html">WORK</a>
+      <a href="about.html">ABOUT</a>
+    </div>
+
+    <!-- Social links -->
+    <div class="cv-footer-column">
+      <h4>SOCIALS</h4>
+      <!-- Replace # with your actual social profile URLs -->
+      <a href="https://www.instagram.com/chitravision_production/" target="https://www.instagram.com/chitravision_production/">INSTAGRAM ↗</a>
+      <a href="https://www.instagram.com/chitravision_marketing/" >CHITRAVISION MARKETING ↗</a>
+      <a href="#" target="_blank" rel="noopener noreferrer">YOUTUBE ↗</a>
+    </div>
+
+  </div>
+
+  <div class="cv-footer-divider"></div>
+
+  <!-- Large interactive wordmark -->
+  <a href="index.html" class="cv-footer-monogram"
+     aria-label="Chitravision home">
+    <span class="cv-monogram-text">CHITRAVISION</span><span
+      class="cv-monogram-dot">.</span>
+  </a>
+
+  <!-- Bottom row -->
+  <div class="cv-footer-bottom">
+    <span>© 2026 CHITRAVISION. ALL RIGHTS RESERVED.</span>
+
+    <div class="cv-footer-legal">
+      <a href="contact.html">LET'S TALK ↗</a>
+      <a href="#top">BACK TO TOP ↑</a>
+    </div>
+  </div>
+
+</footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+
+  <style>
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</body>
+</html>

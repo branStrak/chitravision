@@ -1,0 +1,343 @@
+/* Chitravision Production - About Page Styles */
+
+/* ========================================
+   PAGE HEADER
+   ======================================== */
+
+.page-header {
+  background: var(--stone);
+  padding-top: calc(env(safe-area-inset-top, 0px) + 120px);
+  text-align: center;
+}
+
+.page-header h1 {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   INTRO SECTION
+   ======================================== */
+
+.about-intro {
+  background: var(--stone);
+  border-bottom: 1px solid var(--line);
+}
+
+.intro-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.intro-large {
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0;
+}
+
+.intro-body {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--mithril);
+  margin: 0;
+}
+
+/* ========================================
+   PHILOSOPHY SECTION
+   ======================================== */
+
+.philosophy-section {
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.philosophy-card {
+  padding: 32px;
+  background: rgba(255,255,255,.02);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.philosophy-card h3 {
+  font-size: 22px;
+  margin: 0;
+  color: var(--ink);
+}
+
+.philosophy-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--mithril);
+  margin: 0;
+}
+
+/* ========================================
+   CAPABILITIES SECTION
+   ======================================== */
+
+.capabilities-section {
+  background: var(--stone);
+  border-bottom: 1px solid var(--line);
+}
+
+.capabilities-section h2 {
+  margin-bottom: 64px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.capability-group h3 {
+  font-size: 18px;
+  margin: 0 0 20px 0;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.capability-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.capability-group li {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--mithril);
+  padding-left: 20px;
+  position: relative;
+}
+
+.capability-group li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--brilliance);
+  font-weight: bold;
+}
+
+/* ========================================
+   VALUES SECTION
+   ======================================== */
+
+.values-section {
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+
+.values-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.values-content h2 {
+  margin-bottom: 56px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.value-item h4 {
+  font-family: var(--display);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 20px;
+  margin: 0 0 12px 0;
+  color: var(--ink);
+}
+
+.value-item p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--mithril);
+  margin: 0;
+}
+
+/* ========================================
+   STUDIO SECTION
+   ======================================== */
+
+.studio-section {
+  background: var(--stone);
+  border-bottom: 1px solid var(--line);
+}
+
+.studio-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.studio-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.studio-text h2 {
+  margin: 0;
+}
+
+.studio-text p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--mithril);
+  margin: 0;
+}
+
+.studio-visual {
+  aspect-ratio: 4/3;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.studio-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--mithril);
+  text-align: center;
+  padding: 32px;
+}
+
+.studio-placeholder p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+
+.about-cta-section {
+  background: var(--panel);
+  text-align: center;
+}
+
+.about-cta-section .cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.about-cta-section .cta-note {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--mithril);
+  margin: 0;
+}
+
+.about-cta-section .cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 36px;
+  margin-top: 16px;
+  background: var(--brilliance);
+  color: var(--stone);
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 16px rgba(255,255,255,.1);
+}
+
+.about-cta-section .cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255,255,255,.2);
+}
+
+/* ========================================
+   RESPONSIVE - TABLET
+   ======================================== */
+
+@media (max-width: 960px) {
+  .philosophy-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 32px;
+  }
+
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .studio-content {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE - MOBILE
+   ======================================== */
+
+@media (max-width: 720px) {
+  .intro-large {
+    font-size: 20px;
+  }
+
+  .intro-body {
+    font-size: 16px;
+  }
+
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .philosophy-card {
+    padding: 24px;
+  }
+
+  .values-content h2 {
+    margin-bottom: 40px;
+  }
+}
