@@ -5,95 +5,96 @@
 
   const { $, $$, openModal, escapeHtml } = window.ChitraUtils;
 
-  // Project data - expandable portfolio
+  /**
+   * Reels Portfolio Data
+   * 
+   * TO ADD A NEW REEL:
+   * Simply add a new object to this array under the desired category.
+   * Available categories (match the filter buttons):
+   *   - 'brand-films'
+   *   - 'campaigns'
+   *   - 'wedding-films'
+   *   - 'commercials'
+   *   - 'motion-design'
+   * 
+   * Object properties:
+   *   - title: Name of the reel (used for accessibility / modal)
+   *   - category: One of the category slugs above
+   *   - video: Path to local .mp4 (e.g. 'assets/reels/verti-1.mp4') or video URL
+   *   - poster: (Optional) URL or path to thumbnail image
+   *   - link: (Optional) Instagram / external reel link
+   *   - gradient: Fallback background gradient when video is loading or placeholder
+   */
   const projects = [
     {
-      title: 'Heritage in Motion',
+      title: 'Everyday Elevated',
       category: 'brand-films',
-      categoryLabel: 'Brand Film',
-      client: 'Aster House',
-      description: 'A visual journey through craftsmanship and tradition, capturing the essence of heritage.',
-      tags: ['Cinematography', 'Brand Story'],
-      gradient: 'linear-gradient(135deg, #2a2a2d 0%, #1f1f22 100%)',
-      videoUrl: '',
-      year: '2025'
+      video: 'assets/reels/verti-1.mp4',
+      link: 'https://www.instagram.com/reel/DdwqnlETsbp/',
+      gradient: 'linear-gradient(135deg, #2a2a2d 0%, #1f1f22 100%)'
     },
     {
-      title: 'Urban Narratives',
+      title: 'Form Follows Feeling',
       category: 'campaigns',
-      categoryLabel: 'Campaign',
-      client: 'Atelier N°7',
-      description: 'Stories from the intersection of space and culture in modern cities.',
-      tags: ['Documentary', 'Campaign'],
-      gradient: 'linear-gradient(135deg, #1f1f22 0%, #2a2a2d 100%)',
-      videoUrl: '',
-      year: '2025'
+      video: 'assets/reels/verti-2.mp4',
+      link: 'https://www.instagram.com/chitravision_production/',
+      gradient: 'linear-gradient(135deg, #1f1f22 0%, #2a2a2d 100%)'
     },
     {
-      title: 'Light & Form',
-      category: 'motion-design',
-      categoryLabel: 'Motion Design',
-      client: 'Noma',
-      description: 'An exploration of movement, light, and architectural space.',
-      tags: ['Motion Graphics', '3D Animation'],
-      gradient: 'linear-gradient(135deg, #2d2d30 0%, #1a1a1c 100%)',
-      videoUrl: '',
-      year: '2024'
+      title: 'The Sound of Steel',
+      category: 'commercials',
+      video: 'assets/reels/car-hori-2.mp4',
+      link: 'https://www.instagram.com/chitravision_production/',
+      gradient: 'linear-gradient(135deg, #1a1a1c 0%, #2d2d30 100%)'
     },
     {
       title: 'Eternal Promise',
       category: 'wedding-films',
-      categoryLabel: 'Wedding Film',
-      client: 'Private Commission',
-      description: 'A cinematic celebration of love, family, and new beginnings.',
-      tags: ['Wedding', 'Cinematic'],
-      gradient: 'linear-gradient(135deg, #252528 0%, #1f1f22 100%)',
-      videoUrl: '',
-      year: '2024'
+      video: 'assets/reels/verti-1.mp4',
+      link: 'https://www.instagram.com/chitravision_production/',
+      gradient: 'linear-gradient(135deg, #252528 0%, #1f1f22 100%)'
     },
     {
-      title: 'Product Essence',
-      category: 'commercials',
-      categoryLabel: 'Commercial',
-      client: 'Common Ground',
-      description: 'High-impact commercial showcasing design, craftsmanship, and functionality.',
-      tags: ['Product Film', 'Commercial'],
-      gradient: 'linear-gradient(135deg, #1a1a1c 0%, #2d2d30 100%)',
-      videoUrl: '',
-      year: '2024'
-    },
-    {
-      title: 'Brand Identity Reel',
-      category: 'brand-films',
-      categoryLabel: 'Brand Film',
-      client: 'Studio Kai',
-      description: 'A comprehensive brand story told through motion and emotion.',
-      tags: ['Brand Identity', 'Motion'],
-      gradient: 'linear-gradient(135deg, #1f1f22 0%, #252528 100%)',
-      videoUrl: '',
-      year: '2024'
-    },
-    {
-      title: 'Launch Campaign',
+      title: 'Urban Rhythm',
       category: 'campaigns',
-      categoryLabel: 'Campaign',
-      client: 'Aster House',
-      description: 'Multi-platform campaign launch for a new product line.',
-      tags: ['Campaign', 'Social Media'],
-      gradient: 'linear-gradient(135deg, #2a2a2d 0%, #1a1a1c 100%)',
-      videoUrl: '',
-      year: '2024'
+      video: 'assets/reels/main-1.mp4',
+      link: 'https://www.instagram.com/chitravision_marketing/',
+      gradient: 'linear-gradient(135deg, #2d2d30 0%, #1a1a1c 100%)'
     },
     {
-      title: 'Kinetic Typography',
+      title: 'Light & Form',
       category: 'motion-design',
-      categoryLabel: 'Motion Design',
-      client: 'Atelier N°7',
-      description: 'Dynamic type animations for brand messaging and social content.',
-      tags: ['Typography', 'Animation'],
-      gradient: 'linear-gradient(135deg, #1a1a1c 0%, #1f1f22 100%)',
-      videoUrl: '',
-      year: '2023'
+      video: 'assets/reels/hori-1.mp4',
+      link: 'https://www.instagram.com/chitravision_production/',
+      gradient: 'linear-gradient(135deg, #1f1f22 0%, #252528 100%)'
+    },
+    {
+      title: 'Heritage in Motion',
+      category: 'brand-films',
+      video: 'assets/reels/verti-2.mp4',
+      link: 'https://www.instagram.com/chitravision_production/',
+      gradient: 'linear-gradient(135deg, #2a2a2d 0%, #1a1a1c 100%)'
+    },
+    {
+      title: 'Vows in Silence',
+      category: 'wedding-films',
+      video: 'assets/reels/verti-2.mp4',
+      link: 'https://www.instagram.com/chitravision_production/',
+      gradient: 'linear-gradient(135deg, #252528 0%, #1a1a1c 100%)'
+    },
+    {
+      title: 'Precision Craft',
+      category: 'commercials',
+      video: 'assets/reels/main-1.mp4',
+      link: 'https://www.instagram.com/chitravision_production/',
+      gradient: 'linear-gradient(135deg, #1a1a1c 0%, #1f1f22 100%)'
+    },
+    {
+      title: 'Kinetic Movement',
+      category: 'motion-design',
+      video: 'assets/reels/verti-1.mp4',
+      link: 'https://www.instagram.com/chitravision_production/',
+      gradient: 'linear-gradient(135deg, #2a2a2d 0%, #1f1f22 100%)'
     }
   ];
 
@@ -103,48 +104,42 @@
   function init() {
     renderProjects();
     setupFilters();
-    initProjectCards();
   }
 
-  // Render all projects
+  // Render all reel project cards (9:16 format only, no under-card text or titles)
   function renderProjects() {
     const grid = $('#portfolioGrid');
     if (!grid) return;
 
-    const html = projects.map((project, index) => `
-      <article class="project-card"
-        data-category="${escapeHtml(project.category)}"
-        data-index="${index}"
-        style="animation-delay: ${index * 0.05}s"
-        role="button"
-        tabindex="0"
-        aria-label="View ${escapeHtml(project.title)} project">
-        <div class="project-thumb">
-          <div class="project-gradient" style="background: ${escapeHtml(project.gradient)}"></div>
-          <div class="project-play">
-            <svg width="56" height="56" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6 4l14 8-14 8z"/>
-            </svg>
+    const html = projects.map((project, index) => {
+      const hasVideo = Boolean(project.video);
+      return `
+        <article class="project-card"
+          data-category="${escapeHtml(project.category)}"
+          data-index="${index}"
+          style="animation-delay: ${index * 0.04}s"
+          role="button"
+          tabindex="0"
+          aria-label="${escapeHtml(project.title || 'Reel')}">
+          <div class="project-thumb">
+            ${hasVideo ? `
+              <video autoplay muted loop playsinline preload="metadata" ${project.poster ? `poster="${escapeHtml(project.poster)}"` : ''}>
+                <source src="${escapeHtml(project.video)}" type="video/mp4">
+              </video>
+            ` : ''}
+            <div class="project-gradient" style="background: ${escapeHtml(project.gradient || 'linear-gradient(135deg, #252528 0%, #1a1a1c 100%)')}"></div>
+            <div class="project-play">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 4l14 8-14 8z"/>
+              </svg>
+            </div>
           </div>
-        </div>
-        <div class="project-info">
-          <div class="project-meta">
-            <span class="project-category">${escapeHtml(project.categoryLabel)}</span>
-            <span class="project-dot"></span>
-            <span>${escapeHtml(project.year)}</span>
-          </div>
-          <h3 class="project-title">${escapeHtml(project.title)}</h3>
-          <p class="project-description">${escapeHtml(project.description)}</p>
-          <div class="project-tags">
-            ${project.tags.map(tag => `
-              <span class="project-tag">${escapeHtml(tag)}</span>
-            `).join('')}
-          </div>
-        </div>
-      </article>
-    `).join('');
+        </article>
+      `;
+    }).join('');
 
     grid.innerHTML = html;
+    initProjectCards();
   }
 
   // Setup filter functionality
@@ -167,7 +162,7 @@
     });
   }
 
-  // Apply filter to projects
+  // Apply filter to reels
   function applyFilter(filter) {
     currentFilter = filter;
     const cards = $$('.project-card');
@@ -181,8 +176,7 @@
       if (shouldShow) {
         card.setAttribute('data-hidden', 'false');
         card.style.display = '';
-        // Stagger animation on filter change
-        card.style.animationDelay = `${index * 0.03}s`;
+        card.style.animationDelay = `${visibleCount * 0.03}s`;
         visibleCount++;
       } else {
         card.setAttribute('data-hidden', 'true');
@@ -203,7 +197,7 @@
     cards.forEach(card => {
       // Click handler
       card.addEventListener('click', function() {
-        const index = parseInt(this.getAttribute('data-index'));
+        const index = parseInt(this.getAttribute('data-index'), 10);
         openProjectModal(projects[index]);
       });
 
@@ -211,112 +205,74 @@
       card.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          const index = parseInt(this.getAttribute('data-index'));
+          const index = parseInt(this.getAttribute('data-index'), 10);
           openProjectModal(projects[index]);
         }
       });
     });
   }
 
-  // Open project detail modal
+  // Open 9:16 reel modal
   function openProjectModal(project) {
+    if (!project) return;
+    const hasVideo = Boolean(project.video);
+
     const modalContent = `
-      <div class="modal-close" role="button" tabindex="0" aria-label="Close modal">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M18 6 6 18M6 6l12 12"/>
-        </svg>
-      </div>
-      <div style="
-        max-width: 1200px;
-        width: 100%;
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        overflow: hidden;
-      ">
-        <!-- Video Player Placeholder -->
-        <div style="
-          aspect-ratio: 16/9;
-          background: ${escapeHtml(project.gradient)};
-          display: grid;
-          place-items: center;
-          position: relative;
-        ">
-          <svg width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.3;">
-            <circle cx="12" cy="12" r="10"/>
-            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+      <div style="position: relative; max-width: 420px; width: 100%;">
+        <div class="modal-close" role="button" tabindex="0" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6 6 18M6 6l12 12"/>
           </svg>
         </div>
-
-        <!-- Project Details -->
-        <div style="padding: 40px; display: flex; flex-direction: column; gap: 24px;">
-          <div style="display: flex; align-items: center; gap: 12px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--mithril);">
-            <span>${escapeHtml(project.categoryLabel)}</span>
-            <span style="width: 3px; height: 3px; border-radius: 50%; background: var(--mithril);"></span>
-            <span>${escapeHtml(project.year)}</span>
-            <span style="width: 3px; height: 3px; border-radius: 50%; background: var(--mithril);"></span>
-            <span>${escapeHtml(project.client)}</span>
-          </div>
-
-          <h2 style="
-            font-family: var(--display);
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: clamp(28px, 4vw, 42px);
-            line-height: 1.1;
-            margin: 0;
-          ">${escapeHtml(project.title)}</h2>
-
-          <p style="
-            font-size: 18px;
-            line-height: 1.7;
-            color: var(--mithril);
-            margin: 0;
-            max-width: 720px;
-          ">${escapeHtml(project.description)}</p>
-
-          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
-            ${project.tags.map(tag => `
-              <span style="
-                padding: 6px 14px;
-                border: 1px solid var(--line);
-                border-radius: 4px;
-                font-size: 12px;
-                color: var(--ink);
-                background: rgba(255,255,255,.04);
-              ">${escapeHtml(tag)}</span>
-            `).join('')}
-          </div>
-
-          <div style="
-            margin-top: 16px;
-            padding-top: 24px;
-            border-top: 1px solid var(--line);
-          ">
-            <a href="contact.html" style="
+        <div style="
+          aspect-ratio: 9 / 16;
+          width: 100%;
+          background: #000;
+          border: 1px solid var(--line);
+          border-radius: 14px;
+          overflow: hidden;
+          position: relative;
+          box-shadow: 0 24px 60px rgba(0,0,0,.9);
+          display: grid;
+          place-items: center;
+        ">
+          ${hasVideo ? `
+            <video src="${escapeHtml(project.video)}" controls autoplay playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+          ` : `
+            <div style="background: ${escapeHtml(project.gradient || '#18181b')}; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 24px; text-align: center; gap: 16px;">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.4;">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+              </svg>
+              <h3 style="font-family: var(--display); font-size: 24px; text-transform: uppercase; margin: 0; color: var(--ink);">${escapeHtml(project.title || 'Reel')}</h3>
+            </div>
+          `}
+        </div>
+        ${project.link ? `
+          <div style="margin-top: 14px; text-align: center;">
+            <a href="${escapeHtml(project.link)}" target="_blank" rel="noopener noreferrer" style="
               display: inline-flex;
               align-items: center;
               gap: 8px;
-              padding: 14px 28px;
-              background: var(--brilliance);
-              color: var(--stone);
+              padding: 10px 22px;
+              background: var(--panel);
+              border: 1px solid var(--line);
               border-radius: 999px;
-              font-size: 14px;
-              font-weight: 600;
+              color: var(--ink);
               text-decoration: none;
-              transition: transform .2s;
-            " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-              Start a similar project
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M7 17 17 7M7 7h10v10"/>
-              </svg>
+              font-size: 13px;
+              font-weight: 500;
+              transition: all .2s;
+            " onmouseover="this.style.borderColor='var(--brilliance)'" onmouseout="this.style.borderColor='var(--line)'">
+              <span>View on Instagram</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
             </a>
           </div>
-        </div>
+        ` : ''}
       </div>
     `;
 
-    openModal(modalContent, `${project.title} - ${project.categoryLabel}`, 'project-modal');
+    openModal(modalContent, project.title || 'Chitravision Reel', 'reel-modal');
   }
 
   // Initialize when DOM is ready

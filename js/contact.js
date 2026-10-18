@@ -5,6 +5,23 @@
 
   const { $ } = window.ChitraUtils;
 
+  // EmailJS Configuration
+  const EMAILJS_CONFIG = {
+    // Your EmailJS Public Key
+    publicKey: 'WapsRfoCYYiIrNvpi',
+    // Template configured to send every detail to sutharsanju1435@gmail.com
+    templateId: 'template_kv8hl4m',
+    // Your EmailJS Service ID (connect your Gmail or email service in EmailJS dashboard)
+    serviceId: 'service_dnj2ka3'
+  };
+
+  // Initialize EmailJS
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init({
+      publicKey: EMAILJS_CONFIG.publicKey
+    });
+  }
+
   // Initialize contact form
   function initContactForm() {
     const form = $('#contactForm');
@@ -21,7 +38,7 @@
         return;
       }
 
-      // Submit form (simulate async API call)
+      // Submit form
       submitForm(form);
     });
 
@@ -111,7 +128,7 @@
     });
   }
 
-  // Submit form data
+  // Submit form data to EmailJS
   function submitForm(form) {
     const submitBtn = $('#submitBtn');
     const submitText = submitBtn.querySelector('.submit-text');
@@ -119,18 +136,73 @@
     const submitArrow = submitBtn.querySelector('.submit-arrow');
     const formMessage = $('#formMessage');
 
+    // Check if EmailJS SDK is loaded
+    if (typeof emailjs === 'undefined') {
+      if (formMessage) {
+        formMessage.textContent = 'Email service is currently unavailable. Please reach out directly to hello@chitravision.studio';
+        formMessage.className = 'form-message error';
+        formMessage.style.display = 'block';
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+
     // Disable button and show loader
     submitBtn.disabled = true;
     if (submitText) submitText.textContent = 'Sending enquiry...';
     if (submitLoader) submitLoader.style.display = 'inline-flex';
     if (submitArrow) submitArrow.style.display = 'none';
 
-    // Collect form data
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    // Hide any previous form message
+    if (formMessage) {
+      formMessage.style.display = 'none';
+      formMessage.className = 'form-message';
+    }
 
-    // Simulate network delay (1.5 seconds)
-    setTimeout(() => {
+    // Extract form fields with readable labels
+    const nameInput = form.querySelector('#name');
+    const emailInput = form.querySelector('#email');
+    const companyInput = form.querySelector('#company');
+    const serviceSelect = form.querySelector('#service');
+    const budgetSelect = form.querySelector('#budget');
+    const timelineSelect = form.querySelector('#timeline');
+    const messageInput = form.querySelector('#message');
+
+    const serviceLabel = serviceSelect && serviceSelect.selectedIndex >= 0 && serviceSelect.value
+      ? serviceSelect.options[serviceSelect.selectedIndex].text
+      : (serviceSelect ? serviceSelect.value : '');
+
+    const budgetLabel = budgetSelect && budgetSelect.selectedIndex >= 0 && budgetSelect.value
+      ? budgetSelect.options[budgetSelect.selectedIndex].text
+      : 'Not specified';
+
+    const timelineLabel = timelineSelect && timelineSelect.selectedIndex >= 0 && timelineSelect.value
+      ? timelineSelect.options[timelineSelect.selectedIndex].text
+      : 'Not specified';
+
+    const templateParams = {
+      name: nameInput ? nameInput.value.trim() : '',
+      email: emailInput ? emailInput.value.trim() : '',
+      company: companyInput && companyInput.value.trim() ? companyInput.value.trim() : 'Not specified',
+      service: serviceLabel,
+      budget: budgetLabel,
+      timeline: timelineLabel,
+      message: messageInput ? messageInput.value.trim() : '',
+      to_email: 'sutharsanju1435@gmail.com'
+    };
+
+    // Send email via EmailJS
+    emailjs.send(
+      EMAILJS_CONFIG.serviceId,
+      EMAILJS_CONFIG.templateId,
+      templateParams,
+      {
+        publicKey: EMAILJS_CONFIG.publicKey
+      }
+    )
+    .then(function(response) {
+      console.log('Enquiry sent successfully:', response.status, response.text);
+
       // Re-enable button
       submitBtn.disabled = false;
       if (submitText) submitText.textContent = 'Send enquiry';
@@ -142,18 +214,29 @@
         formMessage.textContent = 'Thank you for your enquiry. We have received your message and will get back to you within 1-2 business days.';
         formMessage.className = 'form-message success';
         formMessage.style.display = 'block';
-
-        // Scroll to message
         formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
 
       // Reset form
       form.reset();
+    })
+    .catch(function(error) {
+      console.error('Failed to send enquiry via EmailJS:', error);
 
-      // Log submission data (for development/demo purposes)
-      console.log('Form submission successful:', data);
+      // Re-enable button
+      submitBtn.disabled = false;
+      if (submitText) submitText.textContent = 'Send enquiry';
+      if (submitLoader) submitLoader.style.display = 'none';
+      if (submitArrow) submitArrow.style.display = 'inline-block';
 
-    }, 1500);
+      // Show friendly error message
+      if (formMessage) {
+        formMessage.textContent = 'Oops! We could not send your message right now. Please try again or email us directly at hello@chitravision.studio';
+        formMessage.className = 'form-message error';
+        formMessage.style.display = 'block';
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
   }
 
   // Initialize when DOM is ready

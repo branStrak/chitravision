@@ -105,20 +105,170 @@
 
 .capabilities-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 48px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.capability-group h3 {
-  font-size: 18px;
-  margin: 0 0 20px 0;
-  padding-bottom: 16px;
+.capability-group {
+  padding: 36px 32px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+
+.capability-group:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+}
+
+.capability-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
   border-bottom: 1px solid var(--line);
+}
+
+.capability-title-wrap {
+  flex: 1;
+}
+
+.capability-number {
+  display: inline-block;
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--mithril);
+  margin-bottom: 6px;
+}
+
+.capability-group h3 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 8px 0;
+  padding-bottom: 0;
+  border-bottom: 0;
   color: var(--ink);
 }
 
+.capability-tagline {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--mithril);
+  margin: 0;
+}
+
+/* Service Widgets */
+.service-widget {
+  flex-shrink: 0;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.capability-group:hover .service-widget {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.widget-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rec-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff3b30;
+  box-shadow: 0 0 8px rgba(255, 59, 48, 0.7);
+  animation: rec-blink 1.8s infinite ease-in-out;
+}
+
+@keyframes rec-blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+.growth-arrow {
+  font-size: 13px;
+  font-weight: 800;
+  color: #34d399;
+  line-height: 1;
+}
+
+.code-icon {
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #60a5fa;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.widget-status {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.status-growth {
+  color: #34d399;
+}
+
+.status-dev {
+  color: #60a5fa;
+}
+
+.widget-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  color: var(--mithril);
+  line-height: 1;
+}
+
+.widget-sub {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--mithril);
+  line-height: 1;
+}
+
+.widget-sub svg {
+  color: var(--mithril);
+  opacity: 0.8;
+}
+
+.capability-list,
 .capability-group ul {
   list-style: none;
   padding: 0;
@@ -134,6 +284,11 @@
   color: var(--mithril);
   padding-left: 20px;
   position: relative;
+  transition: color .2s ease;
+}
+
+.capability-group:hover li {
+  color: var(--ink);
 }
 
 .capability-group li::before {
@@ -142,6 +297,169 @@
   left: 0;
   color: var(--brilliance);
   font-weight: bold;
+}
+
+/* ========================================
+   LEADERSHIP SECTION
+   ======================================== */
+
+.leadership-section {
+  background: var(--stone);
+  border-bottom: 1px solid var(--line);
+}
+
+.leadership-header {
+  max-width: 1400px;
+  margin: 0 auto 64px auto;
+}
+
+.leadership-header h2 {
+  margin: 12px 0 16px 0;
+}
+
+.leadership-intro {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--mithril);
+  max-width: 640px;
+  margin: 0;
+}
+
+.leadership-profiles {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.leadership-profile {
+  display: grid;
+  grid-template-columns: minmax(320px, 440px) 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.leadership-profile--reverse {
+  grid-template-columns: 1fr minmax(320px, 440px);
+}
+
+.leadership-profile--reverse .leadership-image-wrap {
+  order: 2;
+}
+
+.leadership-profile--reverse .leadership-content {
+  order: 1;
+}
+
+/* Portrait Container & Hover Zoom */
+.leadership-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 520px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.leadership-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transform: scale(1);
+  transition: transform 500ms cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .leadership-image-wrap:hover .leadership-image {
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leadership-image {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Founder Details */
+.leadership-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 580px;
+}
+
+.leadership-role {
+  display: inline-block;
+  font-family: var(--display);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mithril);
+  margin-bottom: 10px;
+}
+
+.leadership-name {
+  font-family: var(--body);
+  font-size: clamp(30px, 3.8vw, 44px);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 20px 0;
+  letter-spacing: -0.02em;
+}
+
+.leadership-bio {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--mithril);
+  margin: 0 0 28px 0;
+}
+
+.leadership-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.leadership-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.leadership-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--brilliance);
+  transform: translateY(-2px);
+}
+
+.leadership-link .external-icon {
+  color: var(--mithril);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.leadership-link:hover .external-icon {
+  color: var(--brilliance);
+  transform: translate(2px, -2px);
 }
 
 /* ========================================
@@ -305,6 +623,19 @@
     gap: 40px;
   }
 
+  .leadership-profiles {
+    gap: 64px;
+  }
+
+  .leadership-profile {
+    grid-template-columns: minmax(260px, 360px) 1fr;
+    gap: 40px;
+  }
+
+  .leadership-profile--reverse {
+    grid-template-columns: 1fr minmax(260px, 360px);
+  }
+
   .values-grid {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -335,6 +666,56 @@
 
   .philosophy-card {
     padding: 24px;
+  }
+
+  .capability-group {
+    padding: 28px 20px;
+  }
+
+  .capability-header {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .leadership-header {
+    margin-bottom: 40px;
+  }
+
+  .leadership-intro {
+    font-size: 16px;
+  }
+
+  .leadership-profiles {
+    gap: 48px;
+  }
+
+  .leadership-profile,
+  .leadership-profile--reverse {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .leadership-profile--reverse .leadership-image-wrap {
+    order: 0;
+  }
+
+  .leadership-profile--reverse .leadership-content {
+    order: 1;
+  }
+
+  .leadership-image-wrap {
+    max-height: 420px;
+  }
+
+  .leadership-name {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .leadership-bio {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 20px;
   }
 
   .values-content h2 {
