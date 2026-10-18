@@ -1873,24 +1873,27 @@
     align-items: baseline;
     justify-content: center;
     width: 100%;
+    max-width: 100%;
     margin: 35px auto 15px;
     overflow: hidden;
+    text-decoration: none;
 
     font-family: 'Manrope', sans-serif;
-    font-size: clamp(60px, 12vw, 180px);
+    font-size: clamp(34px, 8.8vw, 150px);
     font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.075em;
+    line-height: 1;
+    letter-spacing: -0.04em;
     white-space: nowrap;
     text-align: center;
 }
 
 
-/* Dark outlined text */
+/* Outlined text with clear visibility across devices */
 
 .cv-monogram-text {
-    color: transparent;
-    -webkit-text-stroke: 1.5px #202024;
+    color: rgba(255, 255, 255, 0.08);
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.28);
+    paint-order: stroke fill;
     transition:
         color 0.45s ease,
         -webkit-text-stroke-color 0.45s ease,
@@ -1901,27 +1904,32 @@
 
 .cv-monogram-dot {
     display: inline-block;
-    color: #202024;
+    color: #a78bfa;
+    opacity: 0.65;
     -webkit-text-stroke: 0;
     transition:
         color 0.35s ease,
+        opacity 0.35s ease,
         text-shadow 0.35s ease;
 }
 
-/* Hover: dark text becomes white */
+/* Hover, focus & active: luminous white illumination */
 
 .cv-footer-monogram:hover .cv-monogram-text,
-.cv-footer-monogram:focus-visible .cv-monogram-text {
+.cv-footer-monogram:focus-visible .cv-monogram-text,
+.cv-footer-monogram:active .cv-monogram-text {
     color: #ffffff;
     -webkit-text-stroke-color: #ffffff;
-    text-shadow: 0 0 25px rgba(255, 255, 255, 0.08);
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.18);
 }
 
 /* Dot glow */
 
 .cv-footer-monogram:hover .cv-monogram-dot,
-.cv-footer-monogram:focus-visible .cv-monogram-dot {
+.cv-footer-monogram:focus-visible .cv-monogram-dot,
+.cv-footer-monogram:active .cv-monogram-dot {
     color: #a78bfa;
+    opacity: 1;
     text-shadow:
         0 0 8px rgba(167, 139, 250, 0.9),
         0 0 22px rgba(167, 139, 250, 0.65),
@@ -1993,11 +2001,19 @@
     }
 
     .cv-footer-monogram {
-        justify-content: flex-start;
-        margin: 30px 0 20px;
-        font-size: 15.2vw;
-        letter-spacing: -0.075em;
-        -webkit-text-stroke-width: 1px;
+        justify-content: center;
+        margin: 28px 0 16px;
+        font-size: clamp(26px, 8.5vw, 56px);
+        letter-spacing: -0.04em;
+    }
+
+    .cv-monogram-text {
+        color: rgba(255, 255, 255, 0.14);
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.35);
+    }
+
+    .cv-monogram-dot {
+        opacity: 0.8;
     }
 
     .cv-footer-bottom {
@@ -2024,7 +2040,8 @@
     }
 
     .cv-footer-monogram {
-        font-size: 14.5vw;
+        font-size: clamp(22px, 8.2vw, 30px);
+        letter-spacing: -0.035em;
     }
 
     .cv-footer-column a {
