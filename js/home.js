@@ -504,7 +504,6 @@
     initHeroMotion();
     initHeroClock();
     initHeroAudio();
-    initScrollAnimations();
     initStatsCounters();
   }
 

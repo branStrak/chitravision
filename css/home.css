@@ -1053,30 +1053,12 @@
   position: relative;
   cursor: pointer;
   transition: transform .4s cubic-bezier(.16, 1, .3, 1);
-  animation: fadeSlideUp .8s ease-out forwards;
-  opacity: 0;
+  opacity: 1;
 }
-
-.reel-item:nth-child(1) { animation-delay: 0.1s; }
-.reel-item:nth-child(2) { animation-delay: 0.2s; }
-.reel-item:nth-child(3) { animation-delay: 0.3s; }
-.reel-item:nth-child(4) { animation-delay: 0.4s; }
-.reel-item:nth-child(5) { animation-delay: 0.5s; }
 
 .reel-item:hover {
   transform: translateY(-8px);
   z-index: 10;
-}
-
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Reel Thumbnails */

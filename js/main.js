@@ -24,16 +24,21 @@
 
     window.__chitravisionLenis = lenis;
 
-    if (window.ScrollTrigger) {
-      lenis.on('scroll', window.ScrollTrigger.update);
-    }
+    if (window.gsap) {
+      if (window.ScrollTrigger) {
+        lenis.on('scroll', window.ScrollTrigger.update);
+      }
 
-    function raf(time) {
-      lenis.raf(time);
+      window.gsap.ticker.add(time => lenis.raf(time * 1000));
+      window.gsap.ticker.lagSmoothing(0);
+    } else {
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
       requestAnimationFrame(raf);
     }
-
-    requestAnimationFrame(raf);
   }
 
   // Mobile Menu Toggle
