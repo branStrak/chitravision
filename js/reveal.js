@@ -37,8 +37,7 @@
     'main .service-approach',
     'main .contact-info > *',
     'main .text-link',
-    'main .cta-button',
-    'footer .cv-footer-bottom'
+    'main .cta-button'
   ];
 
   const fadeSelectors = [
