@@ -169,6 +169,7 @@
   function setupHeroPlayButton() {
     const playBtn = $('#playBtn');
     const playDisc = document.querySelector('.play-disc');
+    const mobileReelBtn = document.querySelector('[data-showreel-trigger]');
 
     if (playBtn) {
       playBtn.addEventListener('click', openShowreelModal);
@@ -188,6 +189,66 @@
       playDisc.style.cursor = 'pointer';
       playDisc.style.pointerEvents = 'auto';
     }
+
+    if (mobileReelBtn) {
+      mobileReelBtn.addEventListener('click', openShowreelModal);
+    }
+  }
+
+  function initHeroMotion() {
+    if (!window.gsap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const gsap = window.gsap;
+    const ScrollTrigger = window.ScrollTrigger;
+
+    if (ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+
+    const intro = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    intro
+      .from('.hero-mobile-header .hero-cat-tag', { y: 12, opacity: 0, duration: 0.6 })
+      .from('.hero-mobile-headline > *', { yPercent: 115, opacity: 0, rotate: 2, stagger: 0.09, duration: 0.9 }, '-=0.3')
+      .from('.hero-mobile-copy, .hero-mobile-actions', { y: 18, opacity: 0, stagger: 0.08, duration: 0.7 }, '-=0.45')
+      .from('.orbit-scene', { scale: 0.76, opacity: 0, rotate: -10, duration: 1.15 }, '-=0.75')
+      .from('.hero-mobile-footer', { y: 12, opacity: 0, duration: 0.6 }, '-=0.5');
+
+    gsap.to('.hero-background-film', {
+      scale: 1.14,
+      yPercent: 7,
+      ease: 'none',
+      scrollTrigger: ScrollTrigger ? {
+        trigger: '.hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 0.8
+      } : undefined
+    });
+
+    gsap.to('.hero-mobile-headline', {
+      yPercent: -12,
+      opacity: 0.2,
+      ease: 'none',
+      scrollTrigger: ScrollTrigger ? {
+        trigger: '.hero',
+        start: '35% top',
+        end: 'bottom top',
+        scrub: 0.8
+      } : undefined
+    });
+
+    const scene = document.getElementById('orbitScene');
+    if (!scene) return;
+
+    scene.addEventListener('pointermove', event => {
+      const bounds = scene.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+      gsap.to(scene, { rotateY: x * 10, rotateX: y * -10, duration: 0.45, ease: 'power2.out', transformPerspective: 700 });
+    });
+
+    scene.addEventListener('pointerleave', () => {
+      gsap.to(scene, { rotateX: 0, rotateY: 0, duration: 0.7, ease: 'elastic.out(1, 0.5)' });
+    });
   }
 
   // Real-time Studio Clock (IST / New Delhi, UTC+5:30)
@@ -439,7 +500,8 @@
     // setupReelShowcase(); uncomment this to show reel directly on page 
     renderFeaturedWork();
     renderTestimonials();
-    // setupHeroPlayButton();
+    setupHeroPlayButton();
+    initHeroMotion();
     initHeroClock();
     initHeroAudio();
     initScrollAnimations();
