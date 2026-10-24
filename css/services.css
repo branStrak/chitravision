@@ -229,11 +229,11 @@
 .process-grid::before {
   content: '';
   position: absolute;
-  left: 30px;
+  left: 0;
   top: 0;
   bottom: 0;
-  width: 3px;
-  background: var(--line);
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
   z-index: -1;
 }
 
@@ -242,9 +242,9 @@
 .process-grid::after {
   content: '';
   position: absolute;
-  left: 30px;
+  left: 0;
   top: 0;
-  width: 3px;
+  width: 1px;
   height: 0%;
   background: linear-gradient(
     to bottom,
@@ -275,7 +275,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 80px 0 80px 120px;
+  padding: 72px 0 72px 56px;
   position: relative;
   opacity: 0.3;
   transform: translateX(-40px);
@@ -293,56 +293,48 @@
 /* Step indicator circle with number */
 
 .process-step::before {
-  content: '';
-  position: absolute;
-  left: 0px;
-  top: 90px;
-  width: 60px;
-  height: 60px;
-  box-sizing: border-box;
-  border-radius: 50%;
-  background: var(--stone);
-  border: 3px solid var(--line);
-  z-index: 2;
-  transition: border-color 0.6s, background 0.6s,
-              transform 0.6s;
+  display: none;
 }
 
 
 .process-step.active::before {
-  border-color: var(--brilliance);
-  background: var(--panel);
-  transform: scale(1.1);
-  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.1);
+  display: none;
 }
 
 /* Remove the large number, we'll use it in the circle */
 .process-number {
-  display: none;
+  width: fit-content;
+  min-width: 42px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--mithril);
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  transition: color 0.6s, border-color 0.6s, background 0.6s;
+}
+
+.process-step.active .process-number {
+  color: var(--brilliance);
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.07);
 }
 
 /* Create the number inside the circle */
 
 .process-step::after {
-  content: attr(data-step);
-  position: absolute;
-  left: 0;
-  top: 90px;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 28px;
-  color: var(--mithril);
-  z-index: 3;
-  pointer-events: none;
+  display: none;
 }
 
 .process-step.active::after {
-  color: var(--brilliance);
+  display: none;
 }
 
 .process-step h3 {
@@ -481,11 +473,11 @@
 
   .process-grid::before,
   .process-grid::after {
-    left: 25px;
+    left: 0;
   }
 
   .process-step {
-    padding: 60px 0 60px 100px;
+    padding: 64px 0 64px 48px;
   }
 
   .process-step::before {
@@ -539,12 +531,12 @@
 
   .process-grid::before,
   .process-grid::after {
-    left: 20px;
-    width: 2px;
+    left: 0;
+    width: 1px;
   }
 
   .process-step {
-    padding: 48px 0 48px 80px;
+    padding: 52px 0 52px 32px;
     gap: 16px;
   }
 
