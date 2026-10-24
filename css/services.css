@@ -375,6 +375,33 @@
   color: var(--ink);
 }
 
+@keyframes processSlideIn {
+  0% {
+    opacity: 0.3;
+    transform: translateX(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .process-step,
+  .process-step.active {
+    opacity: 1;
+    transform: translateX(0%);
+    animation-name: processSlideIn;
+    animation-duration: 1ms;
+    animation-timing-function: linear;
+    animation-fill-mode: backwards;
+    animation-timeline: view();
+    animation-range-start: cover 0%;
+    animation-range-end: cover 50%;
+  }
+}
+
 /* ========================================
    CTA SECTION
    ======================================== */
@@ -572,6 +599,7 @@
   }
 
   .process-step {
+    animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
