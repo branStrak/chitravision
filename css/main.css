@@ -27,6 +27,27 @@ html {
   scroll-padding-top: env(safe-area-inset-top, 0px);
 }
 
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 body {
   background: var(--stone);
   color: var(--ink);
@@ -98,6 +119,8 @@ a {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .brand-lockup {

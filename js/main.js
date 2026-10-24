@@ -7,6 +7,35 @@
   const $ = (selector) => document.querySelector(selector);
   const $$ = (selector) => document.querySelectorAll(selector);
 
+  function initSmoothScroll() {
+    if (!window.Lenis || window.__chitravisionLenis) return;
+
+    const lenis = new window.Lenis({
+      duration: 1.2,
+      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: false,
+      syncTouch: false,
+      anchors: {
+        offset: -72
+      },
+      prevent: node => Boolean(node.closest && node.closest('.modal-content, [data-lenis-prevent]'))
+    });
+
+    window.__chitravisionLenis = lenis;
+
+    if (window.ScrollTrigger) {
+      lenis.on('scroll', window.ScrollTrigger.update);
+    }
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }
+
   // Mobile Menu Toggle
   function initMobileMenu() {
     const menuBtn = $('#menuBtn');
@@ -63,6 +92,7 @@
     `;
 
     document.body.style.overflow = 'hidden';
+    window.__chitravisionLenis?.stop();
 
     const closeBtn = $('.modal-close');
     if (closeBtn) closeBtn.focus();
@@ -82,6 +112,7 @@
       modalSlot.innerHTML = '';
     }
     document.body.style.overflow = '';
+    window.__chitravisionLenis?.start();
   };
 
   // Escape key to close modal
@@ -103,6 +134,7 @@
 
   // Initialize on DOMContentLoaded
   document.addEventListener('DOMContentLoaded', function() {
+    initSmoothScroll();
     initMobileMenu();
     setActiveNav();
   });
