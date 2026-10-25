@@ -48,18 +48,57 @@
   </header>
 
   <main>
-    <!-- Page Header -->
-    <section class="page-header section-pad">
-      <div class="section-kicker">/ What we do</div>
-      <div class="header-grid">
-        <div class="hero-editorial-title">
-        <h1>We Create<br><em>you grow.</em></h1>
+    <section class="services-hero" id="top" aria-labelledby="services-hero-title">
+      <video class="services-hero-film" autoplay muted loop playsinline aria-hidden="true">
+        <source src="assets/reels/car-hori-2.mp4" type="video/mp4">
+      </video>
+      <div class="services-hero-veil" aria-hidden="true"></div>
+
+      <div class="services-hero-content">
+        <div class="services-hero-copy">
+          <div class="section-kicker">[01] Creative capabilities</div>
+          <h1 id="services-hero-title">
+            <span>Visuals that</span>
+            <span>move brands</span>
+            <em>forward.</em>
+          </h1>
+          <p class="header-intro">From scroll-stopping films and campaigns to motion systems that give brands a distinct pulse, we create work built to be noticed and remembered.</p>
+
+          <div class="services-hero-actions">
+            <a class="services-primary-action" href="#brand-films">
+              Explore capabilities
+              <span aria-hidden="true">&#8595;</span>
+            </a>
+            <a class="services-secondary-action" href="contact.html">Start a project &#8599;</a>
+          </div>
         </div>
-        <p class="header-intro">
-         From scroll-stopping reels and striking photography to brand design, social media, and websites, we help your business get noticed and grow.
-        </p>
+
+        <div class="services-hero-stage" aria-hidden="true">
+          <div class="services-stage-orbit services-stage-orbit--outer"></div>
+          <div class="services-stage-orbit services-stage-orbit--inner"></div>
+          <div class="services-stage-core">
+            <span>03</span>
+            <small>Core disciplines</small>
+          </div>
+          <span class="services-float-badge services-float-badge--one">Brand films</span>
+          <span class="services-float-badge services-float-badge--two">Campaigns</span>
+          <span class="services-float-badge services-float-badge--three">Motion + design</span>
+        </div>
+      </div>
+
+      <div class="services-hero-rail">
+        <span>[LOC] INDIA — GLOBAL</span>
+        <span>STRATEGY / PRODUCTION / POST</span>
+        <a href="#services-index">Scroll to explore &#8595;</a>
       </div>
     </section>
+
+    <nav class="services-index" id="services-index" aria-label="Services index">
+      <a href="#brand-films"><span>01</span> Brand films</a>
+      <a href="#campaigns"><span>02</span> Campaigns</a>
+      <a href="#motion-design"><span>03</span> Motion + design</a>
+      <a href="#process"><span>04</span> Process</a>
+    </nav>
 
     <!-- Service 01: Brand Films -->
     <section class="service-showcase section-pad" id="brand-films">
@@ -164,7 +203,7 @@
     </section>
 
     <!-- Process Section -->
-    <section class="process-section section-pad">
+    <section class="process-section section-pad" id="process">
       <div class="section-kicker">/ How we work</div>
       <h2>From brief to<br><em>delivery.</em></h2>
 

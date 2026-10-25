@@ -47,21 +47,66 @@
   </header>
 
   <main>
-    <!-- Page Header -->
-    <section class="page-header section-pad">
-      <div class="section-kicker">/ Who we are</div>
-      <h1>Made for the<br><em>curious.</em></h1>
+    <section class="about-hero" id="top" aria-labelledby="about-hero-title">
+      <video class="about-hero-film" autoplay muted loop playsinline aria-hidden="true">
+        <source src="assets/reels/hori-1.mp4" type="video/mp4">
+      </video>
+      <div class="about-hero-veil" aria-hidden="true"></div>
+
+      <div class="about-hero-layout">
+        <div class="about-hero-copy">
+          <div class="section-kicker">[01] Studio / Point of view</div>
+          <h1 id="about-hero-title">
+            <span>Made for the</span>
+            <em>curious.</em>
+          </h1>
+          <p>Independent minds creating films, identities, and digital experiences that make brands impossible to overlook.</p>
+          <div class="about-hero-actions">
+            <a href="#about-manifesto" class="about-primary-action">Meet the studio <span aria-hidden="true">&#8595;</span></a>
+            <a href="work.html" class="about-secondary-action">View our work &#8599;</a>
+          </div>
+        </div>
+
+        <div class="about-hero-art" aria-hidden="true">
+          <svg class="about-orbit-svg" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="about-svg-ring about-svg-ring--outer" cx="300" cy="300" r="270"/>
+            <circle class="about-svg-ring about-svg-ring--middle" cx="300" cy="300" r="202"/>
+            <circle class="about-svg-ring about-svg-ring--inner" cx="300" cy="300" r="118"/>
+            <path class="about-svg-path" pathLength="1" d="M30 300C110 122 211 28 300 30C421 32 518 139 570 300C518 461 421 568 300 570C179 568 82 461 30 300Z"/>
+            <path class="about-svg-path about-svg-path--reverse" pathLength="1" d="M300 30C468 105 566 194 570 300C566 406 468 495 300 570C132 495 34 406 30 300C34 194 132 105 300 30Z"/>
+            <path class="about-svg-cross" d="M300 82V518M82 300H518"/>
+            <circle class="about-svg-core" cx="300" cy="300" r="58"/>
+          </svg>
+          <div class="about-art-mark">CV</div>
+          <span class="about-art-badge about-art-badge--one">Independent by choice.</span>
+          <span class="about-art-badge about-art-badge--two">Culture before craft.</span>
+          <span class="about-art-badge about-art-badge--three">Built to resonate.</span>
+        </div>
+      </div>
+
+      <div class="about-hero-rail">
+        <span>[LOC] INDIA — GLOBAL</span>
+        <span>FILM / DESIGN / DIGITAL</span>
+        <a href="#about-manifesto">Scroll to discover &#8595;</a>
+      </div>
     </section>
     
     <!-- Intro Section -->
-    <section class="about-intro section-pad">
-      <div class="intro-content">
+    <section class="about-intro section-pad" id="about-manifesto">
+      <div class="about-intro-layout">
+        <aside class="about-intro-meta" aria-label="Studio profile">
+          <span>Independent studio</span>
+          <span>Based in India</span>
+          <span>Working globally</span>
+        </aside>
+        <div class="intro-content">
         <p class="intro-large">
           Chitravision is a creative production and digital solutions studio helping businesses build their identity, tell their stories, and grow their presence.        </p>
           <p class="intro-body">
             From photography, videography, and content creation to graphic design, social media management, digital marketing, and website development, we bring ideas to life across every platform.        </p>
         <p class="intro-body">
           We believe great work starts with understanding your vision, knowing your audience, and creating something that makes people pay attention.        </p>
+        </div>
       </div>
     </section>
     
@@ -200,7 +245,8 @@
           <div class="capability-header">
             <div class="capability-title-wrap">
               <span class="capability-number">02 /</span>
-              <h3>Digital Growth</h3>
+              <h3>Digital
+                 Growth</h3>
               <p class="capability-tagline">Strategies that build your online presence.</p>
             </div>
             <div class="service-widget widget-growth" aria-label="Digital Growth widget">
@@ -306,13 +352,18 @@
         </div>
         <div class="studio-visual">
           <div class="studio-placeholder">
-            <!-- <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5" style="opacity: 0.2;">
-              <rect x="2" y="2" width="20" height="20" rx="2"/>
-              <circle cx="8.5" cy="8.5" r="2.5"/>
-              <path d="M14 3l5 5M3 14l9-9M14.5 21L21 14.5"/>
-            </svg> -->
-            <!-- <p>Studio image placeholder</p> -->
-             <img src="logo.png">
+            <svg class="studio-signal-svg" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect class="studio-signal-frame" x="30" y="30" width="660" height="460" rx="24"/>
+              <circle class="studio-signal-ring studio-signal-ring--one" cx="360" cy="260" r="172"/>
+              <circle class="studio-signal-ring studio-signal-ring--two" cx="360" cy="260" r="112"/>
+              <path class="studio-signal-wave" pathLength="1" d="M82 260H176L222 188L282 342L337 218L389 292L442 164L498 260H638"/>
+              <path class="studio-signal-axis" d="M360 62V458M162 260H558"/>
+              <circle class="studio-signal-core" cx="360" cy="260" r="22"/>
+            </svg>
+            <div class="studio-signal-caption">
+              <span>Creative signal</span>
+              <span>Always in motion</span>
+            </div>
           </div>
         </div>
       </div>
@@ -394,6 +445,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/about.js"></script>
   <script src="js/reveal.js"></script>
 </body>
 </html>

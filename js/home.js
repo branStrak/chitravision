@@ -210,6 +210,7 @@
       .from('.hero-mobile-headline > *', { yPercent: 115, opacity: 0, rotate: 2, stagger: 0.09, duration: 0.9 }, '-=0.3')
       .from('.hero-mobile-copy, .hero-mobile-actions', { y: 18, opacity: 0, stagger: 0.08, duration: 0.7 }, '-=0.45')
       .from('.orbit-scene', { scale: 0.76, opacity: 0, rotate: -10, duration: 1.15 }, '-=0.75')
+      .from('.orbit-scene .quote', { autoAlpha: 0, y: 16, stagger: 0.12, duration: 0.65 }, '-=0.55')
       .from('.hero-mobile-footer', { y: 12, opacity: 0, duration: 0.6 }, '-=0.5');
 
     gsap.to('.hero-background-film', {

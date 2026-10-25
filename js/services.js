@@ -81,10 +81,32 @@
     ]
   };
 
+  const showcaseMedia = {
+    brandFilmsGrid: [
+      'assets/reels/main-1.mp4',
+      'assets/reels/hori-1.mp4',
+      'assets/reels/car-hori-2.mp4',
+      'assets/reels/verti-1.mp4'
+    ],
+    campaignsGrid: [
+      'assets/reels/car-hori-2.mp4',
+      'assets/reels/verti-2.mp4',
+      'assets/reels/hori-1.mp4'
+    ],
+    motionDesignGrid: [
+      'assets/reels/verti-1.mp4',
+      'assets/reels/main-1.mp4',
+      'assets/reels/verti-2.mp4',
+      'assets/reels/car-hori-2.mp4'
+    ]
+  };
+
   // Initialize services page
   function init() {
     renderServiceShowcases();
     initShowcaseItems();
+    initShowcaseMedia();
+    initServicesMotion();
   }
 
   // Render showcase grids for each service
@@ -99,13 +121,23 @@
     const grid = $(`#${gridId}`);
     if (!grid) return;
 
-    const html = items.map((item, index) => `
+    const html = items.map((item, index) => {
+      const showcase = {
+        ...item,
+        media: showcaseMedia[gridId][index]
+      };
+
+      return `
       <div class="showcase-item"
-        data-showcase='${JSON.stringify(item).replace(/'/g, '&#39;')}'
+        data-showcase='${JSON.stringify(showcase).replace(/'/g, '&#39;')}'
         role="button"
         tabindex="0"
         aria-label="View ${escapeHtml(item.title)}">
-        <div class="showcase-thumb" style="background: ${escapeHtml(item.gradient)}"></div>
+        <div class="showcase-thumb" style="background: ${escapeHtml(item.gradient)}">
+          <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+            <source src="${escapeHtml(showcase.media)}" type="video/mp4">
+          </video>
+        </div>
         <div class="showcase-overlay">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
             <path d="M6 4l14 8-14 8z"/>
@@ -116,7 +148,8 @@
           <p class="showcase-label-meta">${escapeHtml(item.client)}</p>
         </div>
       </div>
-    `).join('');
+    `;
+    }).join('');
 
     grid.innerHTML = html;
   }
@@ -143,6 +176,25 @@
     });
   }
 
+  function initShowcaseMedia() {
+    const videos = document.querySelectorAll('.showcase-thumb video');
+    if (!videos.length) return;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const video = entry.target;
+
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { rootMargin: '180px 0px', threshold: 0.08 });
+
+    videos.forEach(video => observer.observe(video));
+  }
+
   // Open showcase modal
   function openShowcaseModal(showcase) {
     const modalContent = `
@@ -159,18 +211,14 @@
         border-radius: 12px;
         overflow: hidden;
       ">
-        <!-- Video Player Placeholder -->
         <div style="
           aspect-ratio: 16/9;
           background: ${escapeHtml(showcase.gradient)};
-          display: grid;
-          place-items: center;
           position: relative;
         ">
-          <svg width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity: 0.3;">
-            <circle cx="12" cy="12" r="10"/>
-            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
-          </svg>
+          <video controls autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+            <source src="${escapeHtml(showcase.media)}" type="video/mp4">
+          </video>
         </div>
 
         <!-- Showcase Details -->
@@ -249,6 +297,61 @@
     `;
 
     openModal(modalContent, `${showcase.title} - ${showcase.client}`, 'showcase-modal');
+  }
+
+  function initServicesMotion() {
+    if (!window.gsap || !window.ScrollTrigger || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const gsap = window.gsap;
+    const ScrollTrigger = window.ScrollTrigger;
+    const heroStage = document.querySelector('.services-hero-stage');
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to('.services-hero-film', {
+      scale: 1.12,
+      yPercent: 8,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.services-hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 0.8
+      }
+    });
+
+    gsap.from('.services-float-badge', {
+      opacity: 0,
+      stagger: 0.12,
+      duration: 0.8,
+      delay: 0.35,
+      ease: 'back.out(1.6)'
+    });
+
+    if (heroStage) {
+      heroStage.addEventListener('pointermove', event => {
+        const bounds = heroStage.getBoundingClientRect();
+        const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+        const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+        gsap.to(heroStage, { rotateY: x * 9, rotateX: y * -9, duration: 0.45, ease: 'power2.out', transformPerspective: 800 });
+      });
+
+      heroStage.addEventListener('pointerleave', () => {
+        gsap.to(heroStage, { rotateX: 0, rotateY: 0, duration: 0.7, ease: 'elastic.out(1, 0.5)' });
+      });
+    }
+
+    document.querySelectorAll('.service-showcase, .process-section').forEach(section => {
+      const link = document.querySelector(`.services-index a[href="#${section.id}"]`);
+      if (!link) return;
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top 45%',
+        end: 'bottom 45%',
+        onToggle: self => link.classList.toggle('active', self.isActive)
+      });
+    });
   }
 
   // Smooth scroll to service sections

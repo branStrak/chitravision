@@ -50,6 +50,7 @@
     'main .leadership-image-wrap',
     'main .studio-visual',
     'main .service-widget',
+    'main .services-hero-stage',
     'main .hero-clock-card',
     'main .hero-audio-pill-wrap',
     'footer .cv-footer-monogram'

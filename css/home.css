@@ -2482,3 +2482,40 @@
         transition-duration: 0.01ms !important;
     }
 }
+
+.orbit-scene .quote {
+    animation: none;
+    padding: 9px 14px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 999px;
+    background: rgba(12, 12, 12, .48);
+    box-shadow: 0 12px 38px rgba(0, 0, 0, .3);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 15px;
+    font-style: normal;
+    line-height: 1;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    filter: none;
+    will-change: auto;
+}
+
+.orbit-scene .quote-c {
+    left: 0;
+    right: 0;
+    width: max-content;
+    margin-inline: auto;
+    transform: none;
+}
+
+@media (max-width: 768px) {
+    .orbit-scene .quote {
+        padding: 7px 11px;
+        font-size: 12px;
+    }
+}
