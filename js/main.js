@@ -91,7 +91,6 @@
         .to(iconLines[1], { y: -4, rotation: -45, duration: 0.35, ease: 'power2.inOut' }, 0.18)
         .to(links, {
           y: '0%',
-          skewY: 0,
           opacity: 1,
           duration: 0.68,
           stagger: 0.075,
