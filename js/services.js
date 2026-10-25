@@ -134,7 +134,7 @@
         tabindex="0"
         aria-label="View ${escapeHtml(item.title)}">
         <div class="showcase-thumb" style="background: ${escapeHtml(item.gradient)}">
-          <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <video autoplay muted loop playsinline webkit-playsinline preload="metadata" disablepictureinpicture aria-hidden="true">
             <source src="${escapeHtml(showcase.media)}" type="video/mp4">
           </video>
         </div>
@@ -192,7 +192,15 @@
       });
     }, { rootMargin: '180px 0px', threshold: 0.08 });
 
-    videos.forEach(video => observer.observe(video));
+    videos.forEach(video => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      observer.observe(video);
+    });
   }
 
   // Open showcase modal
