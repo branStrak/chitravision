@@ -209,8 +209,8 @@
       .from('.hero-mobile-header .hero-cat-tag', { y: 12, opacity: 0, duration: 0.6 })
       .from('.hero-mobile-headline > *', { yPercent: 115, opacity: 0, rotate: 2, stagger: 0.09, duration: 0.9 }, '-=0.3')
       .from('.hero-mobile-copy, .hero-mobile-actions', { y: 18, opacity: 0, stagger: 0.08, duration: 0.7 }, '-=0.45')
-      .from('.orbit-scene', { scale: 0.76, opacity: 0, rotate: -10, duration: 1.15 }, '-=0.75')
-      .from('.orbit-scene .quote', { autoAlpha: 0, y: 16, stagger: 0.12, duration: 0.65 }, '-=0.55')
+      .from('.orbit-scene', { opacity: 0, duration: 1.15, clearProps: 'opacity' }, '-=0.75')
+      .from('.orbit-scene .quote', { autoAlpha: 0, stagger: 0.12, duration: 0.65, clearProps: 'opacity,visibility' }, '-=0.55')
       .from('.hero-mobile-footer', { y: 12, opacity: 0, duration: 0.6 }, '-=0.5');
 
     gsap.to('.hero-background-film', {
@@ -237,19 +237,6 @@
       } : undefined
     });
 
-    const scene = document.getElementById('orbitScene');
-    if (!scene) return;
-
-    scene.addEventListener('pointermove', event => {
-      const bounds = scene.getBoundingClientRect();
-      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-      gsap.to(scene, { rotateY: x * 10, rotateX: y * -10, duration: 0.45, ease: 'power2.out', transformPerspective: 700 });
-    });
-
-    scene.addEventListener('pointerleave', () => {
-      gsap.to(scene, { rotateX: 0, rotateY: 0, duration: 0.7, ease: 'elastic.out(1, 0.5)' });
-    });
   }
 
   // Real-time Studio Clock (IST / New Delhi, UTC+5:30)

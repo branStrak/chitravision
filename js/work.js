@@ -104,6 +104,33 @@
   function init() {
     renderProjects();
     setupFilters();
+    initWorkMotion();
+  }
+
+  function initWorkMotion() {
+    if (!window.gsap || !window.ScrollTrigger || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    window.gsap.registerPlugin(window.ScrollTrigger);
+    const timeline = window.gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    timeline
+      .from('.work-hero-stage', { autoAlpha: 0, scale: 0.86, rotate: -5, duration: 1.2 }, 0.15)
+      .from('.work-frame-badge', { autoAlpha: 0, y: 14, stagger: 0.12, duration: 0.6 }, 0.55)
+      .from('.work-hero-rail > *', { autoAlpha: 0, y: 10, stagger: 0.1, duration: 0.5 }, 0.72);
+
+    window.gsap.fromTo('.work-frame-aperture',
+      { strokeDasharray: 1, strokeDashoffset: 1 },
+      { strokeDashoffset: 0, duration: 1.8, ease: 'power2.inOut' }
+    );
+
+    window.gsap.to('.work-frame-ring--outer', { rotate: 360, duration: 32, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+    window.gsap.to('.work-frame-ring--inner', { rotate: -360, duration: 22, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+    window.gsap.to('.work-hero-film', {
+      yPercent: 10,
+      scale: 1.14,
+      ease: 'none',
+      scrollTrigger: { trigger: '.work-hero', start: 'top top', end: 'bottom top', scrub: 1 }
+    });
   }
 
   // Render all reel project cards (9:16 format only, no under-card text or titles)
@@ -133,6 +160,13 @@
                 <path d="M6 4l14 8-14 8z"/>
               </svg>
             </div>
+            <div class="project-meta">
+              <span>${String(index + 1).padStart(2, '0')}</span>
+              <div>
+                <strong>${escapeHtml(project.title)}</strong>
+                <small>${escapeHtml(project.category.replace(/-/g, ' '))}</small>
+              </div>
+            </div>
           </div>
         </article>
       `;
@@ -140,6 +174,7 @@
 
     grid.innerHTML = html;
     initProjectCards();
+    animateCards(Array.from(grid.querySelectorAll('.project-card')));
   }
 
   // Setup filter functionality
@@ -165,7 +200,7 @@
   // Apply filter to reels
   function applyFilter(filter) {
     currentFilter = filter;
-    const cards = $$('.project-card');
+    const cards = Array.from($$('.project-card'));
     const emptyState = $('#emptyState');
     let visibleCount = 0;
 
@@ -188,6 +223,32 @@
     if (emptyState) {
       emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
     }
+
+    const visibleCards = cards.filter(card => card.getAttribute('data-hidden') !== 'true');
+    animateCards(visibleCards);
+
+    requestAnimationFrame(() => {
+      window.__chitravisionLenis?.resize();
+      window.ScrollTrigger?.refresh();
+    });
+  }
+
+  function animateCards(cards) {
+    if (!cards.length || !window.gsap || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    window.gsap.killTweensOf(cards);
+    window.gsap.fromTo(cards,
+      { autoAlpha: 0, y: 24, scale: 0.985 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.65,
+        stagger: 0.06,
+        ease: 'power3.out',
+        clearProps: 'opacity,visibility,transform'
+      }
+    );
   }
 
   // Initialize project card interactions

@@ -48,20 +48,44 @@
   </header>
 
   <main>
-    <!-- Page Header -->
-    <section class="page-header section-pad">
-      <div class="section-kicker">/ Selected work</div>
-      <div class="header-grid">
-        <h1>Stories that<br><em>stay.</em></h1>
+    <section class="work-hero" id="top" aria-labelledby="work-hero-title">
+      <video class="work-hero-film" autoplay muted loop playsinline aria-hidden="true">
+        <source src="assets/reels/hori-1.mp4" type="video/mp4">
+      </video>
+      <div class="work-hero-veil" aria-hidden="true"></div>
+      <div class="work-hero-layout">
+        <div class="work-hero-copy">
+          <div class="section-kicker">[01] Selected work</div>
+          <h1 id="work-hero-title"><span>Stories that</span><em>stay.</em></h1>
         <p class="header-intro">
           Every project is a chance to turn an idea into something people remember.
           Here's some of what we've made—real work for real people.
-        </p>
+          </p>
+          <a href="#work-filters" class="work-hero-action">Explore the archive <span aria-hidden="true">&#8595;</span></a>
+        </div>
+        <div class="work-hero-stage" aria-hidden="true">
+          <svg class="work-frame-svg" viewBox="0 0 620 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect class="work-frame-box" x="54" y="54" width="512" height="512" rx="34"/>
+            <circle class="work-frame-ring work-frame-ring--outer" cx="310" cy="310" r="218"/>
+            <circle class="work-frame-ring work-frame-ring--inner" cx="310" cy="310" r="132"/>
+            <path class="work-frame-axis" d="M310 54V566M54 310H566"/>
+            <path class="work-frame-aperture" pathLength="1" d="M310 178L424 244V376L310 442L196 376V244L310 178Z"/>
+          </svg>
+          <div class="work-frame-core"><span>10</span><small>Selected reels</small></div>
+          <span class="work-frame-badge work-frame-badge--one">Film / Campaign</span>
+          <span class="work-frame-badge work-frame-badge--two">Made to move</span>
+          <span class="work-frame-badge work-frame-badge--three">India / Global</span>
+        </div>
+      </div>
+      <div class="work-hero-rail">
+        <span>CHITRAVISION ARCHIVE</span>
+        <span>2026 / SELECTED EDITION</span>
+        <a href="#work-filters">View projects &#8595;</a>
       </div>
     </section>
 
     <!-- Filter Bar -->
-    <section class="filter-section">
+    <section class="filter-section" id="work-filters">
       <div class="filter-container">
         <span class="filter-label">Filter:</span>
         <div class="filter-chips" id="filterChips" role="tablist" aria-label="Project categories">

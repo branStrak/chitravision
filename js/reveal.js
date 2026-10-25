@@ -16,7 +16,6 @@
     '.values-grid',
     '.leadership-profiles',
     '.service-showcase-grid',
-    '.portfolio-grid',
     '.filter-chips',
     '.contact-form',
     '.cv-footer-top'

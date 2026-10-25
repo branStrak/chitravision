@@ -48,20 +48,42 @@
   </header>
 
   <main>
-    <!-- Page Header -->
-    <section class="page-header section-pad">
-      <div class="section-kicker">/ Get in touch</div>
-      <div class="header-content">
-        <h1>Let's talk about<br><em>your project.</em></h1>
+    <section class="contact-hero" id="top" aria-labelledby="contact-hero-title">
+      <div class="contact-hero-glow" aria-hidden="true"></div>
+      <div class="contact-hero-layout">
+        <div class="contact-hero-copy">
+          <div class="section-kicker">[01] Start a conversation</div>
+          <h1 id="contact-hero-title"><span>Let's make</span><em>contact.</em></h1>
         <p class="header-intro">
           Whether you have a clear brief or just a spark of an idea, we'd like to hear it.
           Tell us a little about where you want to go—we'll take it from there.
-        </p>
+          </p>
+          <div class="contact-availability"><span></span> Taking on selected projects</div>
+        </div>
+        <div class="contact-signal" aria-hidden="true">
+          <svg class="contact-signal-svg" viewBox="0 0 620 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="contact-signal-ring contact-signal-ring--outer" cx="310" cy="310" r="260"/>
+            <circle class="contact-signal-ring contact-signal-ring--middle" cx="310" cy="310" r="188"/>
+            <circle class="contact-signal-ring contact-signal-ring--inner" cx="310" cy="310" r="112"/>
+            <path class="contact-signal-line" pathLength="1" d="M52 310H168L210 244L258 374L310 214L356 338L404 274L452 310H568"/>
+            <path class="contact-signal-axis" d="M310 50V570M50 310H570"/>
+            <circle class="contact-signal-core" cx="310" cy="310" r="54"/>
+          </svg>
+          <div class="contact-signal-mark">HELLO</div>
+          <span class="contact-signal-badge contact-signal-badge--one">Reply in 1–2 days</span>
+          <span class="contact-signal-badge contact-signal-badge--two">India / Global</span>
+          <span class="contact-signal-badge contact-signal-badge--three">Briefs welcome</span>
+        </div>
+      </div>
+      <div class="contact-hero-rail">
+        <span>NEW BUSINESS / COLLABORATIONS</span>
+        <span>FILM / DESIGN / DIGITAL</span>
+        <a href="#contact-form-section">Share your brief &#8595;</a>
       </div>
     </section>
 
     <!-- Contact Form Section -->
-    <section class="contact-section section-pad">
+    <section class="contact-section section-pad" id="contact-form-section">
       <div class="contact-grid">
         <!-- Contact Form -->
         <div class="form-container">

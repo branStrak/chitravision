@@ -51,6 +51,32 @@
     });
   }
 
+  function initContactMotion() {
+    if (!window.gsap || !window.ScrollTrigger || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    window.gsap.registerPlugin(window.ScrollTrigger);
+    const timeline = window.gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    timeline
+      .from('.contact-signal', { autoAlpha: 0, scale: 0.86, rotate: -5, duration: 1.2 }, 0.15)
+      .from('.contact-signal-badge', { autoAlpha: 0, y: 14, stagger: 0.12, duration: 0.6 }, 0.55)
+      .from('.contact-hero-rail > *', { autoAlpha: 0, y: 10, stagger: 0.1, duration: 0.5 }, 0.72);
+
+    window.gsap.fromTo('.contact-signal-line',
+      { strokeDasharray: 1, strokeDashoffset: 1 },
+      { strokeDashoffset: 0, duration: 1.8, ease: 'power2.inOut' }
+    );
+
+    window.gsap.to('.contact-signal-ring--outer', { rotate: 360, duration: 34, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+    window.gsap.to('.contact-signal-ring--middle', { rotate: -360, duration: 26, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+    window.gsap.to('.contact-signal-ring--inner', { rotate: 360, duration: 19, repeat: -1, ease: 'none', transformOrigin: '50% 50%' });
+  }
+
+  function initPage() {
+    initContactForm();
+    initContactMotion();
+  }
+
   // Validate single field
   function validateField(field) {
     const name = field.getAttribute('name');
@@ -241,9 +267,9 @@
 
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initContactForm);
+    document.addEventListener('DOMContentLoaded', initPage);
   } else {
-    initContactForm();
+    initPage();
   }
 
 })();
