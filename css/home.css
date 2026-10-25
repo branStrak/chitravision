@@ -2484,7 +2484,7 @@
 }
 
 .orbit-scene .quote {
-    animation: none;
+    animation: orbitBadgeFloat 5.4s ease-in-out infinite;
     padding: 9px 14px;
     border: 1px solid rgba(255, 255, 255, .16);
     border-radius: 999px;
@@ -2504,6 +2504,9 @@
     filter: none;
     will-change: auto;
 }
+
+.orbit-scene .quote-b { animation-delay: -1.8s; }
+.orbit-scene .quote-c { animation-delay: -3.6s; }
 
 .orbit-scene,
 .orbit-scene:hover {

@@ -470,3 +470,35 @@ h3 {
     scroll-behavior: auto;
   }
 }
+
+@keyframes orbitBadgeFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+
+.about-art-badge,
+.work-frame-badge,
+.contact-signal-badge {
+  animation: orbitBadgeFloat 5.4s ease-in-out infinite;
+}
+
+.about-art-badge--two,
+.work-frame-badge--two,
+.contact-signal-badge--two {
+  animation-delay: -1.8s;
+}
+
+.about-art-badge--three,
+.work-frame-badge--three,
+.contact-signal-badge--three {
+  animation-delay: -3.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-art-badge,
+  .work-frame-badge,
+  .contact-signal-badge {
+    animation: none !important;
+    translate: none !important;
+  }
+}
