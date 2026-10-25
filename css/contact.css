@@ -596,6 +596,95 @@
 .info-section:hover { transform: translateY(-4px); border-color: rgba(255, 255, 255, .22); }
 .info-section h3 { font-family: var(--serif); font-size: 25px; font-weight: 400; }
 
+.contact-actions-card {
+  padding: 28px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, .08), transparent 42%),
+    linear-gradient(145deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .015));
+}
+
+.contact-actions-kicker {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--mithril);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+.contact-actions-card h3 { margin-bottom: 8px; font-size: 30px; }
+
+.contact-direct-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.contact-direct-button {
+  min-width: 0;
+  min-height: 64px;
+  padding: 11px 14px;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 14px;
+  color: var(--ink);
+  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.contact-direct-button > svg {
+  width: 21px;
+  height: 21px;
+  justify-self: center;
+}
+
+.contact-direct-button--whatsapp {
+  background: #25d366;
+  color: #07140b;
+  border-color: #25d366;
+  box-shadow: 0 12px 32px rgba(37, 211, 102, .22);
+}
+
+.contact-direct-button--whatsapp > svg { fill: currentColor; }
+
+.contact-direct-button--call { background: rgba(255, 255, 255, .035); }
+
+.contact-direct-button span:not(.contact-direct-arrow) {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.contact-direct-button small {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  opacity: .62;
+  text-transform: uppercase;
+}
+
+.contact-direct-arrow { font-size: 17px; }
+
+.contact-direct-button:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, .32);
+}
+
+.contact-direct-button--whatsapp:hover {
+  background: #2be06d;
+  border-color: #2be06d;
+  box-shadow: 0 16px 38px rgba(37, 211, 102, .3);
+}
+
+.contact-direct-button--call:hover { background: rgba(255, 255, 255, .075); }
+
 @media (max-width: 980px) {
   .contact-hero-layout { grid-template-columns: 1fr; gap: 10px; }
   .contact-signal { width: min(70vw, 520px); justify-self: center; margin-top: -20px; }
